@@ -3,6 +3,10 @@
 module.exports = {
     flowFile: 'flows.json',
 
+    // Bind all interfaces so Coolify's Traefik (separate container) can reach us.
+    // Node-RED defaults to 127.0.0.1 (loopback) when uiHost is unset → proxy gets 503.
+    uiHost: '0.0.0.0',
+
     // Encrypts the flow credentials file. Set NODE_RED_CREDENTIAL_SECRET in Coolify.
     credentialSecret: process.env.NODE_RED_CREDENTIAL_SECRET,
 
